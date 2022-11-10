@@ -1,2 +1,144 @@
+body {
+  background-color: #ccc;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
+}
+.header {
+  background-color: #212529;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 5px 10%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.logo {
+  height: 55px;
+  width: auto;
+}
+.logo__img {
+  height: 100%;
+  width: auto;
+  transition: all 1s ease;
+}
+.logo__img:hover {
+  transform: scale(1.2);
+}
 
+.nav-bar__link {
+  text-decoration: none;
+  padding: 0 20px;
+  font-size: 1rem;
+  color: #fff;
+  font-weight: normal;
+  margin-left: 3px;
+  transition: all 0.5s;
+}
+.nav-bar__link-grey {
+  color: #879199;
+}
+.nav-bar__link:hover {
+  border: none;
+  border-radius: 10px;
+  background: #ff4947;
+  padding: 8px 16px;
+}
+.button {
+  border: none;
+  border-radius: 10px;
+  padding: 8px 16px;
+  color: #fff;
+  text-decoration: none;
+  background: #ff4947;
+  font-size: 1rem;
+}
+.button--red {
+  border-radius: 5px;
+  color: #ff4947;
+  border: 0.5px solid #ff4947;
+  background: #fff;
+  transition: all 1s ease;
+}
+.button--red:hover {
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  background: #ff4947;
+}
+.registros{
+    padding: 1rem;
+    position: relative;
+    padding: 1rem;;
+    margin: 0 -1.5rem;
+    border: solid #dee2e6;
+    border-width: 1px 0;
+}
+.registros{
+  display: grid;
+  grid-template-rows: repeat(8 , 2fr);
+  gap: 12px;
+  border: 1px solid  #ccc;
+}
+
+
+
+.footer {
+    background: #212529; 
+    
+    bottom: 0;
+    left: 0;
+    right: 0; 
+    min-height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo-footer {
+    height: 40px;
+    width: 20px;
+    padding: 0 4.5rem;
+  }
+  .logo-footer__img {
+    height: 100%;
+    width: auto;
+    transition: all 1s ease;
+  }
+  .logo-footer__img:hover {
+    transform: scale(1.2);
+  }
+  .footer__texto {
+    font-size: 1rem;
+    color: #ccc;
+    font-weight: 100;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .footer__texto-absolute {
+    position: absolute;
+    margin-left: 7.5rem;
+    margin-top: 0.5rem;
+  }
+  .redes-list {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    padding: 0 4rem;
+  }
+  .redes-list__link {
+    margin-left: 1rem;
+  }
+  
+  .redes-list__link svg {
+    color: #fff;
+    transition: all 0.5ms ease;
+  }
+  .redes-list__link svg:hover {
+    color: #ff4947;
+  }
+  .redes__link-verde svg:hover {
+    color: #00ff00;
+  }
   

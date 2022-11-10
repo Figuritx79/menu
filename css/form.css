@@ -215,18 +215,25 @@ body {
   cursor: pointer;
 }
 .input-checkbox__hobby {
-  font-size: 3rem;
   padding-left: 10px;
+  color: #ff4947;
+  cursor: pointer;
+/*   appearance: none;
+  width: 48px;
+  height: 48px; */
+  background: #ffffff;
+  border-radius: 80%;
+  border: 1px solid #888;
 }
-.button-red{
+.button-red {
   background: #ff4947;
   cursor: pointer;
- margin: 2rem  3.5rem;
- transition: background 1.2s linear;
- color: #ffffff;
+  margin: 2rem 3.5rem;
+  transition: background 2s linear;
+  color: #ffffff;
 }
-.button-red:hover{
-  background: #0d6efd;;
+.button-red:hover {
+  background: #0d6efd;
 }
 
 .footer {

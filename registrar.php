@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form</title>
+    <title>Ok</title>
     <meta name="description" content="Menu con formulario,busqueda,actualizacion y eliminación">
     <meta name="keywords" content="html,css,php,myslq,xampp,menu">
     <meta name="author" content="Enrique González">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/ok.css">
 </head>
 
 <body>
@@ -19,9 +19,9 @@
             <img src="img/logo.svg" alt="logo" class="logo__img" title="logo">
         </a>
         <nav class="nav-bar">
-            <a href="" class="nav-bar__link nav-bar__link-grey ">Home</a>
-            <a href="" class="nav-bar__link">Ver registros</a>
-            <a href="" class="nav-bar__link">Buscar</a>
+            <a href="index.php" class="nav-bar__link nav-bar__link-grey ">Home</a>
+            <a href="registros.php" class="nav-bar__link">Ver registros</a>
+            <a href="search.php" class="nav-bar__link">Buscar</a>
         </nav>
         <a href="#footer" class="button button--red">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-signal" viewBox="0 0 16 16">
@@ -30,67 +30,47 @@
             <span class="button__text">Redes sociales</span>
         </a>
     </header>
+    <?php
+    if (isset($_POST['register'])) {
+        if (strlen($_POST['clave']) >= 1 && strlen($_POST['nombre']) >= 1 && strlen($_POST['apellido']) >= 1) {
+            include('connection/conn.php');
+            $clave = trim($_POST['clave']);
+            $nombre = trim($_POST['nombre']);
+            $apellido = trim($_POST['apellido']);
+            $edad = trim($_POST['edad']);
+            $carrera = trim($_POST['carrera']);
+            $genero = trim($_POST['genero']);
+            $hobby = $_POST['hobby'];
+            $pas = "";
+            for ($i = 0; $i < count($hobby); $i++) {
+                $pas = $pas . $hobby[$i] . "-";
+            }
+            $pas = substr($pas, 0, strlen($pas) - 1);
+            $query = "INSERT INTO `registros`(`clave`, `nombres`, `apellidos`, `edad`, `especialidad`, `genero`, `hobby`) VALUES ('$clave','$nombre','$apellido','$edad','$carrera','$genero','$pas')";
 
-    <form action="registrar.php" method="post" class="registro">
-        <h2 class="registro__titulo">Registrate</h2>
-        <div class="input-text">
-            <label for="clave" class="input-text__label">Clave:</label>
-            <input type="text" name="clave" id="clave" class="input-text__input" placeholder=" " required autofocus>
+            if (mysqli_query($conexion, $query)) {
+    ?>
+                <h1 class="teto__exito">
+                    Registro exitoso
+                </h1>
+                <a href="index.php" class="god" title="Home">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
+                        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
+                    </svg>
+                </a>
 
-            <label for="nombre" class="input-text__label">Nombre:</label>
-            <input type="text" name="nombre" id="nombre" class="input-text__input" placeholder=" " required>
+    <?php
+            } else {
+                echo "Error: " . $query . "<br>" . mysqli_error($conexion);
+            }
+        }
+    }
 
-            <label for="apellido" class="input-text__label">Apellidos:</label>
-            <input type="text" name="apellido" id="apellido" class="input-text__input" placeholder=" " required>
 
-            <label for="edad" class="input-text__label">Edad:</label>
-            <input type="text" name="edad" id="edad" class="input-text__input" placeholder=" " required onkeypress="return valideKey(event);">
-        </div>
-        <div class="input-select">
-            <label for="speciality" class="input-select__label">Carrera:</label>
-            <select name="carrera" id="speciality" class="input-select__carrera">
-                <option selected disabled>Selecciona una opción</option>
-                <option value="TP">Técnico en programación</option>
-                <option value="TPV">Técnico en prendas de vestir</option>
-                <option value="TMI">Técnico en matenimineto</option>
-            </select>
-        </div>
-        <div class="input-radio">
-            <label class=" input-radio__label-gen">Género:</label>
 
-            <input type="radio" id="M" name="genero" value="Masculino" class="input-radio__genero">
-            <label for="M" class="input-radio__label">Masculino</label>
 
-            <input type="radio" id="F" name="genero" value="Femenino" class="input-radio__genero">
-            <label for="F" class="input-radio__label">Femenino</label>
-        </div>
-        <div class="input-checkbox">
-            <label  class="checkbox__label-hobby">Pasatiempo:</label>
-            <div class="flex-column-1">
-                <input type="checkbox" name="hobby[]" id="deporte" value="deporte" class="input-checkbox__hobby">
-                <label for="deporte" class="input-checkbox__label">Deporte</label>
-
-                <input type="checkbox" name="hobby[]" id="musica" value="musica" class="input-checkbox__hobby">
-                <label for="musica" class="input-checkbox__label">Musica</label>
-
-                <input type="checkbox" name="hobby[]" id="nadar" value="nadar" class="input-checkbox__hobby">
-                <label for="nadar" class="input-checkbox__label">Nadar</label>
-            </div>
-
-            <div  class="flex-column-2"> 
-                <input type="checkbox" name="hobby[]" id="correr" value="correr" class="input-checkbox__hobby">
-                <label for="correr" class="input-checkbox__label">Correr</label>
-                
-                <input type="checkbox" name="hobby[]" id="leer" value="leer" class="input-checkbox__hobby">
-                <label for="leer" class="input-checkbox__label">Leer</label>
-                
-                <input type="checkbox" name="hobby[]" id="dormir" value="dormir" class="input-checkbox__hobby">
-                <label for="dormir" class="input-checkbox__label">Dormir</label>
-            </div>
-            <button type="submit" class="button button-red" name="register">Registrar</button>
-        </div>
-    </form>
-    
+    ?>
     <footer class="footer" id="footer">
         <a href="index.php" class="logo-footer">
             <img src="img/logo.svg" alt="logo" class="logo-footer__img" title="logo">
@@ -122,12 +102,6 @@
             </ul>
         </div>
     </footer>
-
-
-
-
-
-    <script src="js/main.js"></script>
 </body>
 
 </html>
