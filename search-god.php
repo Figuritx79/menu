@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actulizar registros</title>
+    <title>Busqueda</title>
     <meta name="description" content="Menu con formulario,busqueda,actualizacion y eliminación">
     <meta name="keywords" content="html,css,php,myslq,xampp,menu">
     <meta name="author" content="Enrique González">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/search.css">
+    <link rel="shortcut icon" href="img/search.svg" type="image/x-icon">
 </head>
 
 <body>
@@ -31,19 +32,63 @@
         </a>
     </header>
 
-    <div class="crud">
-        <form action="update-god.php" method="post" class="crud__form">
-            <h2 class="crud__titulo">Actulizar registro</h2>
-            <label for="buscar" class="crud__label">Introduce la clave del usuario:</label>
-            <input type="text" name="clave" id="buscar" class="crud__input" autofocus autocomplete="off" required>
-            <button type="submit" class="button button--absolute button--purple" name="register">
-                Buscar
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                </svg>
-            </button>
-        </form>
-    </div>
+    <?php
+    if (isset($_POST['register'])) {
+        include('connection/conn.php');
+        $clave = $_POST['clave'];
+        $query = "SELECT * FROM registros WHERE clave='$clave'";
+        $resultado = mysqli_query($conexion, $query);
+        $response = mysqli_num_rows($resultado);
+        if ($response > 0) {
+            ?>
+                <h2 class="encontrado">Se ha encontrado un<?php echo $response?> resultado</h2>
+
+            <?php
+/*             echo '<h2>SE  han encontrado' . $response . 'resultados</h2>'; */
+    ?>
+
+            <div class="registros">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Clave</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellidos</th>
+                            <th scope="col">Edad</th>
+                            <th scope="col">Carreras</th>
+                            <th scope="col">Genero</th>
+                            <th scope="col">Hobby</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $resultado = mysqli_query($conexion, $query);
+                        while ($row = mysqli_fetch_assoc($resultado)) { ?>
+                            <tr>
+                                <td scope="row"><?php echo $row['clave'];    ?> </td>
+                                <td> <?php echo $row['nombres'];    ?> </td>
+                                <td> <?php echo $row['apellidos'];    ?> </td>
+                                <td><?php echo $row['edad'];    ?></td>
+                                <td> <?php echo $row['especialidad'];    ?> </td>
+                                <td> <?php echo $row['genero'];    ?> </td>
+                                <td><?php echo $row['hobby'];    ?> </td>
+
+                            </tr>
+                        <?php }
+                        mysqli_free_result($resultado)   ?>
+
+            </div>
+
+        <?php
+        } else {
+        ?>
+
+            <h6 class="registro-no">No se ha encontrado nada</h6>
+
+    <?php
+        }
+    }
+    ?>
 
     <footer class="footer" id="footer">
         <a href="index.php" class="logo-footer">
@@ -76,7 +121,6 @@
             </ul>
         </div>
     </footer>
-
 </body>
 
 </html>

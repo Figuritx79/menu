@@ -1,3 +1,6 @@
+<?php
+include('connection/conn.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,12 +8,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actulizar registros</title>
+    <title>Actualizar registro</title>
     <meta name="description" content="Menu con formulario,busqueda,actualizacion y eliminación">
     <meta name="keywords" content="html,css,php,myslq,xampp,menu">
     <meta name="author" content="Enrique González">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/form.css">
 </head>
 
 <body>
@@ -30,20 +33,59 @@
             <span class="button__text">Redes sociales</span>
         </a>
     </header>
+    <?php
+    if (isset($_POST['register'])) {
+        include('connection/conn.php');
+        $clave = $_POST['clave'];
+        $query = "SELECT * FROM registros WHERE clave='$clave'";
+        $resultado = mysqli_query($conexion, $query);
+        $response = mysqli_num_rows($resultado);
+        if ($response > 0) {
+    ?>
+             <?php
+                $resultado = mysqli_query($conexion, $query);
+                while ($row = mysqli_fetch_assoc($resultado)) { ?>
+            <form action="backend/actualizar.php" method="post" class="registro">
+                <h2 class="registro__titulo">Actualizar registro</h2>
+                <div class="input-text">
+                    <label for="clave" class="input-text__label">Clave:</label>
+                    <input type="text" disabled name="clave" id="clave" class="input-text__input" placeholder="<?php echo $row['clave']; ?> " autofocus>
 
-    <div class="crud">
-        <form action="update-god.php" method="post" class="crud__form">
-            <h2 class="crud__titulo">Actulizar registro</h2>
-            <label for="buscar" class="crud__label">Introduce la clave del usuario:</label>
-            <input type="text" name="clave" id="buscar" class="crud__input" autofocus autocomplete="off" required>
-            <button type="submit" class="button button--absolute button--purple" name="register">
-                Buscar
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                </svg>
-            </button>
-        </form>
-    </div>
+                    <label for="nombre" class="input-text__label">Nombre:</label>
+                    <input type="text" name="nombre" id="nombre" class="input-text__input" placeholder="<?php echo $row['nombres'];?>" required autofocus>
+
+                    <label for="apellido" class="input-text__label">Apellidos:</label>
+                    <input type="text" name="apellido" id="apellido" class="input-text__input" placeholder="<?php echo $row['apellidos'];?>" required>
+
+                    <label for="edad" class="input-text__label">Edad:</label>
+                    <input type="text" name="edad" id="edad" class="input-text__input" placeholder="<?php echo $row['edad'];?>" required onkeypress="return valideKey(event);">
+
+                    <label for="edad" class="input-text__label">Especialidad:</label>
+                    <input type="text" name="carrera" id="carrera" class="input-text__input" placeholder="<?php echo $row['especialidad'];?>" required >
+
+                    <label for="edad" class="input-text__label">Genero:</label>
+                    <input type="text" name="genero" id="genero" class="input-text__input" placeholder="<?php echo $row['genero'];?>" required>
+
+                    <label for="edad" class="input-text__label">Hobby:</label>
+                    <input type="text" name="hobby" id="hobby" class="input-text__input" placeholder="<?php echo $row['hobby'];?>" required>
+
+                    <button type="submit" class="button button-red" name="update">Actualizar</button>
+                </div>
+            </form 
+            <?php }
+                mysqli_free_result($resultado)   ?>
+            
+            <?php
+                } else {
+                    ?> <h6 class="registro-no">No se ha encontrado el registro</h6>
+
+    <?php
+                }
+            }
+    ?>
+
+
+    ?>
 
     <footer class="footer" id="footer">
         <a href="index.php" class="logo-footer">

@@ -1,3 +1,6 @@
+<?php
+include('../connection/conn.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,18 +8,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actulizar registros</title>
+    <title>Actualizar registro</title>
     <meta name="description" content="Menu con formulario,busqueda,actualizacion y eliminación">
     <meta name="keywords" content="html,css,php,myslq,xampp,menu">
     <meta name="author" content="Enrique González">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/form.css">
 </head>
 
 <body>
     <header class="header">
         <a href="index.php" class="logo">
-            <img src="img/logo.svg" alt="logo" class="logo__img" title="logo">
+            <img src="../img/logo.svg" alt="logo" class="logo__img" title="logo">
         </a>
         <nav class="nav-bar">
             <a href="index.php" class="nav-bar__link nav-bar__link-grey ">Home</a>
@@ -30,24 +33,28 @@
             <span class="button__text">Redes sociales</span>
         </a>
     </header>
-
-    <div class="crud">
-        <form action="update-god.php" method="post" class="crud__form">
-            <h2 class="crud__titulo">Actulizar registro</h2>
-            <label for="buscar" class="crud__label">Introduce la clave del usuario:</label>
-            <input type="text" name="clave" id="buscar" class="crud__input" autofocus autocomplete="off" required>
-            <button type="submit" class="button button--absolute button--purple" name="register">
-                Buscar
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                </svg>
-            </button>
-        </form>
-    </div>
+    <?php
+    if (isset($_POST['update'])) {
+        include('../connection/conn.php');
+        error_reporting(0);  
+        $nombres = $_POST['nombres'];  
+        $apellidos = $_POST['apellidos'];  
+        $edad = $_POST['edad'];  
+        $especialidad = $_POST['especialidad'];
+        $genero = $_POST['genero'];  
+        $pasatiempos = $_POST['hobby'];
+       /*  $query = "UPDATE `registros` SET `nombres`='$nombres',`apellidos`='$apellidos',`edad`='$edad',`especialidad`='$carrera',`genero`='$genero',`hobby`='$hobby' WHERE 'clave'='$clave'";
+        $actualizar=mysqli_query($conexion, $query); */
+        if (mysqli_query($conexion,"UPDATE `registros` SET `nombres`='$nombres',`apellidos`='$apellidos',`edad`='$edad',`especialidad`='$carrera',`genero`='$genero',`hobby`='$hobby' WHERE 'clave'='$clave'")) {
+                echo ('Actualización exitosa');
+            
+        }
+    }
+    ?>
 
     <footer class="footer" id="footer">
         <a href="index.php" class="logo-footer">
-            <img src="img/logo.svg" alt="logo" class="logo-footer__img" title="logo">
+            <img src="../img/logo.svg" alt="logo" class="logo-footer__img" title="logo">
         </a>
         <span class="footer__texto footer__texto-absolute">© 2022 Mi menú</span>
         <div class="redes">
