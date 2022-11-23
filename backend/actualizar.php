@@ -1,6 +1,3 @@
-<?php
-include('../connection/conn.php');
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +11,7 @@ include('../connection/conn.php');
     <meta name="author" content="Enrique González">
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="../css/update.css">
 </head>
 
 <body>
@@ -22,9 +20,9 @@ include('../connection/conn.php');
             <img src="../img/logo.svg" alt="logo" class="logo__img" title="logo">
         </a>
         <nav class="nav-bar">
-            <a href="index.php" class="nav-bar__link nav-bar__link-grey ">Home</a>
-            <a href="registros.php" class="nav-bar__link">Ver registros</a>
-            <a href="search.php" class="nav-bar__link">Buscar</a>
+            <a href="../index.php" class="nav-bar__link nav-bar__link-grey ">Home</a>
+            <a href="../registros.php" class="nav-bar__link">Ver registros</a>
+            <a href="../search.php" class="nav-bar__link">Buscar</a>
         </nav>
         <a href="#footer" class="button button--red">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-signal" viewBox="0 0 16 16">
@@ -36,19 +34,34 @@ include('../connection/conn.php');
     <?php
     if (isset($_POST['update'])) {
         include('../connection/conn.php');
-        error_reporting(0);  
-        $nombres = $_POST['nombres'];  
-        $apellidos = $_POST['apellidos'];  
+        $clave=$_POST['clave']; 
+        $nombres = $_POST['nombre'];  
+        $apellidos = $_POST['apellido'];  
         $edad = $_POST['edad'];  
-        $especialidad = $_POST['especialidad'];
+        $especialidad = $_POST['carrera'];
         $genero = $_POST['genero'];  
         $pasatiempos = $_POST['hobby'];
-       /*  $query = "UPDATE `registros` SET `nombres`='$nombres',`apellidos`='$apellidos',`edad`='$edad',`especialidad`='$carrera',`genero`='$genero',`hobby`='$hobby' WHERE 'clave'='$clave'";
-        $actualizar=mysqli_query($conexion, $query); */
-        if (mysqli_query($conexion,"UPDATE `registros` SET `nombres`='$nombres',`apellidos`='$apellidos',`edad`='$edad',`especialidad`='$carrera',`genero`='$genero',`hobby`='$hobby' WHERE 'clave'='$clave'")) {
-                echo ('Actualización exitosa');
-            
-        }
+        $query = "UPDATE `registros` SET `nombres`='$nombres',`apellidos`='$apellidos',
+        `edad`='$edad',`especialidad`='$especialidad',`genero`='$genero',
+        `hobby`='$pasatiempos'
+         WHERE `clave`='$clave'";
+        $actualizar=mysqli_query($conexion, $query);
+        if ($actualizar) {
+              ?>
+               <h3 class="good">Registro Actualizado</h3>
+               <a href="../registros.php" class="menu-list__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-clipboard2-check" viewBox="0 0 16 16">
+                            <path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5h3Z" />
+                            <path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-12Z" />
+                            <path d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3Z" />
+                        </svg>
+                    </a>
+            <?php   
+        }else{
+            ?>
+            <h3>Registro no Actualizado</h3>
+            <?php
+        }        
     }
     ?>
 

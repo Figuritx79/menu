@@ -1,0 +1,15 @@
+.good{
+    text-align: center;
+    margin-top: 5rem;
+    font-size: 2rem;
+}
+.menu-list__link{
+    color: #000;
+    position: absolute;
+    margin: 11rem 38rem;
+    transition: all 1s ease;
+}
+.menu-list__link:hover{
+    color: #802345;
+    transform: scale(1.2);
+}
