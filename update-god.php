@@ -49,7 +49,8 @@ include('connection/conn.php');
                 <h2 class="registro__titulo">Actualizar registro</h2>
                 <div class="input-text">
                     <label for="clave" class="input-text__label">Clave:</label>
-                    <input type="text"  name="clave" id="clave" class="input-text__input" value="<?php echo $row['clave']; ?>" autofocus>
+                    <input type="hidden" name="clave" value="<?php echo $row['clave']; ?>">
+                    <input type="text"  name="id" id="clave" class="input-text__input" value="<?php echo $row['clave']; ?>" autofocus>
 
                     <label for="nombre" class="input-text__label">Nombre:</label>
                     <input type="text" name="nombre" id="nombre" class="input-text__input" placeholder="<?php echo $row['nombres'];?>" required autofocus>
