@@ -2,10 +2,9 @@ body {
   background-color: #ccc;
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  grid-template-rows: auto 1fr auto;
 }
 .header {
   background-color: #212529;
@@ -93,14 +92,14 @@ body {
   color: #ffffff;
   text-decoration: none;
   font-weight: 100;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 .menu-logo svg:hover {
   color: #ff4947;
 }
-.menu-logo__texto{
+.menu-logo__texto {
   font-size: 22.812px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin-left: 5px;
   margin-top: 2px;
 }
@@ -112,36 +111,33 @@ hr {
   opacity: 0.25;
 }
 .menu-list__item {
- list-style: none;
- display: flex;;
- margin-bottom: 1.5rem;
+  list-style: none;
+  display: flex;
+  margin-bottom: 1.5rem;
 }
-.menu-list__link{
+.menu-list__link {
   text-decoration: none;
   color: #ffffff;
   font-size: 1.3rem;
-   margin-right: 1.3rem; 
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  transition: all .5s ease-in-out;
+  margin-right: 1.3rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.5s ease-in-out;
 }
-.menu-list__link:hover{
-  color:#ccc;
-  background: #0D6EFD;
+.menu-list__link:hover {
+  color: #ccc;
+  background: #0d6efd;
   border-radius: 10px;
   padding: 5px 5px;
 }
-.menu-list__link-red{
+.menu-list__link-red {
   background: #ff4947;
   border-radius: 5px;
   padding: 5px 5px;
 }
 
 .footer {
-  background: #212529; 
-   position: relative;
-  bottom: 0;
-  left: 0;
-  right: 0; 
+  background: #212529;
+  margin-top: auto;
   min-height: 5vh;
   display: flex;
   justify-content: space-between;

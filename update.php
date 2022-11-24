@@ -10,7 +10,7 @@
     <meta name="keywords" content="html,css,php,myslq,xampp,menu">
     <meta name="author" content="Enrique González">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/busqueda.css">
 </head>
 
 <body>

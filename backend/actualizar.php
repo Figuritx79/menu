@@ -10,7 +10,7 @@
     <meta name="keywords" content="html,css,php,myslq,xampp,menu">
     <meta name="author" content="Enrique González">
     <link rel="stylesheet" href="../css/normalize.css">
-    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="../css/formu.css">
     <link rel="stylesheet" href="../css/update.css">
 </head>
 

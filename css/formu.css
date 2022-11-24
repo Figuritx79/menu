@@ -1,0 +1,287 @@
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  .header {
+    background-color: #212529;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 5px 10%;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .logo {
+    height: 55px;
+    width: auto;
+  }
+  .logo__img {
+    height: 100%;
+    width: auto;
+    transition: all 1s ease;
+  }
+  .logo__img:hover {
+    transform: scale(1.2);
+  }
+  
+  .nav-bar__link {
+    text-decoration: none;
+    padding: 0 20px;
+    font-size: 1rem;
+    color: #fff;
+    font-weight: normal;
+    margin-left: 3px;
+    transition: all 0.5s;
+  }
+  .nav-bar__link-grey {
+    color: #879199;
+  }
+  .nav-bar__link:hover {
+    border: none;
+    border-radius: 10px;
+    background: #ff4947;
+    padding: 8px 16px;
+  }
+  .button {
+    border: none;
+    border-radius: 10px;
+    padding: 8px 16px;
+    color: #fff;
+    text-decoration: none;
+    background: #ff4947;
+    font-size: 1rem;
+  }
+  .button--red {
+    border-radius: 5px;
+    color: #ff4947;
+    border: 0.5px solid #ff4947;
+    background: #fff;
+    transition: all 1s ease;
+  }
+  .button--red:hover {
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    background: #ff4947;
+  }
+  .registro {
+    width: 15rem;
+    height: 31rem;
+    display: flex;
+    margin: 1.2rem auto;
+    border: 0.5px solid #212529;
+    border-radius: 1.2rem;
+    flex-direction: column;
+    background: #212529;
+    color: #ffffff;
+    font-weight: 100;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 1.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    padding: 2em 3em;
+  }
+  .registro__titulo {
+    text-align: center;
+    margin-bottom: 1.3rem;
+  }
+  .input-text__label {
+    display: block;
+    font-size: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1px;
+  }
+  
+  .input-text__input {
+    margin-left: 1rem;
+    margin-bottom: 10px;
+    border: none;
+    height: 1.2rem;
+    color: #ffffff;
+    background-color: #212529;
+  }
+  .input-text__input:focus {
+    border: 1px solid #da4340;
+    outline: none;
+    border-radius: 3px;
+    box-shadow: 0 0 0 0.25rem rgb(255 73 71 / 25%);
+  }
+  .input-select__label {
+    display: block;
+    font-size: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1px;
+  }
+  .input-select__carrera {
+    margin-left: 1rem;
+    margin-bottom: 10px;
+    border: none;
+    height: 1.2rem;
+    color: #ffffff;
+    background-color: #212529;
+  }
+  .input-select__carrera:focus {
+    border: 1px solid #da4340;
+    outline: none;
+    border-radius: 3px;
+    box-shadow: 0 0 0 0.25rem rgb(255 73 71 / 25%);
+  }
+  .input-radio__label {
+    color: #ffffff;
+    padding: 5px 15px 5px 20px;
+    display: inline-block;
+    position: relative;
+    border-radius: 3px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3 ease-in-out;
+  }
+  .input-radio__label:hover {
+    box-shadow: 0 0 0 0.25rem rgb(255 73 71 / 25%);
+    background: #da4340;
+  }
+  .input-radio__label::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background: none;
+    border: 3px solid #ff4947;
+    border-radius: 40%;
+    position: absolute;
+    left: 1px;
+  }
+  .input-radio__genero {
+    display: none;
+  }
+  .input-radio__genero:checked + .input-radio__label {
+    padding: 5px 10px;
+    background-color: #ff4947;
+    border-radius: 2px;
+    color: #fff;
+  }
+  .input-radio__genero:checked + .input-radio__label::before {
+    display: none;
+  }
+  .input-radio__label-gen {
+    display: block;
+    font-size: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1px;
+  }
+  
+  .checkbox__label-hobby {
+    display: block;
+    font-size: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1px;
+  }
+  .flex-column-1 {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.01rem;
+    margin-left: 17px;
+    padding: 1px 4px;
+    margin-left: 1rem;
+    margin-bottom: 1px;
+    font-size: 1rem;
+  }
+  
+  .flex-column-2 {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.01rem;
+    margin-left: 17px;
+    padding: 1px 4px;
+    margin-left: 1rem;
+    font-size: 1rem;
+  }
+  .input-checkbox__label {
+    margin-left: 2px;
+    color: #ffffff;
+    padding: 5px 10px 5px 10px;
+    display: inline-block;
+    position: relative;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .input-checkbox__hobby {
+    padding-left: 10px;
+    color: #ff4947;
+    cursor: pointer;
+  /*   appearance: none;
+    width: 48px;
+    height: 48px; */
+    background: #ffffff;
+    border-radius: 80%;
+    border: 1px solid #888;
+  }
+  .button-red {
+    background: #ff4947;
+    cursor: pointer;
+    margin: 2rem 3.5rem;
+    transition: background 2s linear;
+    color: #ffffff;
+  }
+  .button-red:hover {
+    background: #0d6efd;
+  }
+  
+  .footer {
+    background: #212529;
+    margin-top: auto;
+    min-height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo-footer {
+    height: 40px;
+    width: 20px;
+    padding: 0 4.5rem;
+  }
+  .logo-footer__img {
+    height: 100%;
+    width: auto;
+    transition: all 1s ease;
+  }
+  .logo-footer__img:hover {
+    transform: scale(1.2);
+  }
+  .footer__texto {
+    font-size: 1rem;
+    color: #ccc;
+    font-weight: 100;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .footer__texto-absolute {
+    position: absolute;
+    margin-left: 7.5rem;
+    margin-top: 0.5rem;
+  }
+  .redes-list {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    padding: 0 4rem;
+  }
+  .redes-list__link {
+    margin-left: 1rem;
+  }
+  
+  .redes-list__link svg {
+    color: #fff;
+    transition: all 0.5ms ease;
+  }
+  .redes-list__link svg:hover {
+    color: #ff4947;
+  }
+  .redes__link-verde svg:hover {
+    color: #00ff00;
+  }

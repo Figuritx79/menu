@@ -1,11 +1,9 @@
 body {
-  background-color: #ccc;
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  grid-template-rows: auto 1fr auto;
 }
 .header {
   background-color: #212529;
@@ -69,7 +67,7 @@ body {
   color: #fff;
   background: #ff4947;
 }
-.crud{
+.crud {
   width: 30rem;
   height: 10.6rem;
   outline: 1px solid black;
@@ -80,15 +78,16 @@ body {
   -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
   background-color: #212529;
 }
-.crud__form{
+.crud__form {
   width: 100%;
   height: 100%;
   padding: 10px;
   color: #fff;
 }
-.crud__titulo{
+.crud__titulo {
   text-align: center;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 1.5em;
   position: absolute;
   top: 7rem;
@@ -96,12 +95,12 @@ body {
   left: 35rem;
   text-transform: capitalize;
 }
-.crud__label{
+.crud__label {
   display: block;
   margin: 15px 1.2rem;
   font-size: 1.5rem;
 }
-.crud__input{
+.crud__input {
   margin-left: 1.2rem;
   padding: 5px;
   width: 25rem;
@@ -112,40 +111,35 @@ body {
   box-shadow: 0 0 0 0.25rem rgb(255 73 71 / 60%);
   border-radius: 5px;
   background: #212529;
-  margin-top: .1rem;
-  
+  margin-top: 0.1rem;
 }
-.button--absolute{
+.button--absolute {
   position: absolute;
   top: 19.7rem;
   left: 45rem;
 }
-.button--purple{
+.button--purple {
   background: rgb(150, 50, 150);
   border: none;
   border-radius: 10px;
   padding: 10px 20px;
   cursor: pointer;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
-.button--purple:hover{
+.button--purple:hover {
   background: #ffffff;
   color: rgb(150, 50, 150);
   border: 1px solid rgb(150, 50, 150);
   transform: scale(1.2);
 }
-.button--purple svg{
+.button--purple svg {
   margin-left: 2px;
   padding-left: 5px;
 }
-
 .footer {
   background: #212529;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  min-height: 10vh;
+  margin-top: auto;
+  min-height: 5vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -196,39 +190,32 @@ body {
 .redes__link-verde svg:hover {
   color: #00ff00;
 }
-.registros {
+table {
+  position: absolute;
   background: #212529;
-  width: 37.6rem;
-  margin: 100px auto;
+  width: 37.5rem;
+  left: 5rem;
+  margin: 210px;
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 1.75);
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-}
-.registros table {
-  width: 100%;
+
   text-align: left;
-  width: 100%;
   border-collapse: collapse;
 }
 td,
-th{
+th {
   padding: 10px;
   color: #fff;
 }
-.registros thead{
+thead {
   background-color: #2fccaa;
   color: #424040;
-  border-bottom: solid 5px #0F362D;
+  border-bottom: solid 5px #0f362d;
 }
-.registros tr:nth-child(even){
-  background: rgb(78, 69, 69);
-}
-.registros tr td{
-  transition: all .9s ease-out;
-}
-.registros tr:hover td{
-  background-color: rgb(78, 69, 69);
-}
-.encontrado{
+.encontrado {
+  position: absolute;
+  width: 20px;
+  height: 20px;
   text-align: center;
 }

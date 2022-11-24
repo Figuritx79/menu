@@ -10,7 +10,7 @@
     <meta name="keywords" content="html,css,php,myslq,xampp,menu">
     <meta name="author" content="Enrique González">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/busqueda.css">
     <link rel="shortcut icon" href="img/search.svg" type="image/x-icon">
 </head>
 
@@ -31,64 +31,6 @@
             <span class="button__text">Redes sociales</span>
         </a>
     </header>
-
-    <?php
-    if (isset($_POST['register'])) {
-        include('connection/conn.php');
-        $clave = $_POST['clave'];
-        $query = "SELECT * FROM registros WHERE clave='$clave'";
-        $resultado = mysqli_query($conexion, $query);
-        $response = mysqli_num_rows($resultado);
-        if ($response > 0) {
-            ?>
-                <h2 class="encontrado">Se ha encontrado un<?php echo $response?> resultado</h2>
-
-            <?php
-/*             echo '<h2>SE  han encontrado' . $response . 'resultados</h2>'; */
-    ?>
-
-            <div class="registros">
-                <table>
-                    <thead>
-                        <tr>
-                            <th scope="col">Clave</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Apellidos</th>
-                            <th scope="col">Edad</th>
-                            <th scope="col">Carreras</th>
-                            <th scope="col">Genero</th>
-                            <th scope="col">Hobby</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $resultado = mysqli_query($conexion, $query);
-                        while ($row = mysqli_fetch_assoc($resultado)) { ?>
-                            <tr>
-                                <td scope="row"><?php echo $row['clave'];    ?> </td>
-                                <td> <?php echo $row['nombres'];    ?> </td>
-                                <td> <?php echo $row['apellidos'];    ?> </td>
-                                <td><?php echo $row['edad'];    ?></td>
-                                <td> <?php echo $row['especialidad'];    ?> </td>
-                                <td> <?php echo $row['genero'];    ?> </td>
-                                <td><?php echo $row['hobby'];    ?> </td>
-
-                            </tr>
-                        <?php }
-                        mysqli_free_result($resultado)   ?>
-
-            </div>
-
-        <?php
-        } else {
-        ?>
-
-            <h6 class="registro-no">No se ha encontrado nada</h6>
-
-    <?php
-        }
-    }
-    ?>
 
     <footer class="footer" id="footer">
         <a href="index.php" class="logo-footer">
@@ -121,6 +63,56 @@
             </ul>
         </div>
     </footer>
+
+    <?php
+    if (isset($_POST['register'])) {
+        include('connection/conn.php');
+        $clave = $_POST['clave'];
+        $query = "SELECT * FROM registros WHERE clave='$clave'";
+        $resultado = mysqli_query($conexion, $query);
+        $response = mysqli_num_rows($resultado);
+        if ($response > 0) {
+    ?>
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Clave</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellidos</th>
+                        <th scope="col">Edad</th>
+                        <th scope="col">Carreras</th>
+                        <th scope="col">Genero</th>
+                        <th scope="col">Hobby</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $resultado = mysqli_query($conexion, $query);
+                    while ($row = mysqli_fetch_assoc($resultado)) { ?>
+                        <tr>
+                            <td scope="row"><?php echo $row['clave'];    ?> </td>
+                            <td> <?php echo $row['nombres'];    ?> </td>
+                            <td> <?php echo $row['apellidos'];    ?> </td>
+                            <td><?php echo $row['edad'];    ?></td>
+                            <td> <?php echo $row['especialidad'];    ?> </td>
+                            <td> <?php echo $row['genero'];    ?> </td>
+                            <td><?php echo $row['hobby'];    ?> </td>
+
+                        </tr>
+                    <?php }
+                    mysqli_free_result($resultado)   ?>
+
+
+                <?php
+            } else {
+                ?>
+
+                    <h6 class="registro-no">No se ha encontrado nada</h6>
+
+            <?php
+            }
+        }
+            ?>
 </body>
 
 </html>

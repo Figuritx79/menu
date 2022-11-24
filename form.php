@@ -10,7 +10,7 @@
     <meta name="keywords" content="html,css,php,myslq,xampp,menu">
     <meta name="author" content="Enrique González">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/formu.css">
 </head>
 
 <body>
@@ -19,9 +19,9 @@
             <img src="img/logo.svg" alt="logo" class="logo__img" title="logo">
         </a>
         <nav class="nav-bar">
-            <a href="" class="nav-bar__link nav-bar__link-grey ">Home</a>
-            <a href="" class="nav-bar__link">Ver registros</a>
-            <a href="" class="nav-bar__link">Buscar</a>
+            <a href="index.php" class="nav-bar__link nav-bar__link-grey ">Home</a>
+            <a href="registros.php" class="nav-bar__link">Ver registros</a>
+            <a href="search.php" class="nav-bar__link">Buscar</a>
         </nav>
         <a href="#footer" class="button button--red">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-signal" viewBox="0 0 16 16">
