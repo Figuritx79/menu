@@ -134,6 +134,7 @@
                         </ul>
                     </div>
                 </footer>
+                <script src="../js/alert.js"></script>
 </body>
 
 </html>
