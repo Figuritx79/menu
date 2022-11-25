@@ -2,7 +2,6 @@
     if (isset($_POST['eliminar'])) {
         include('../connection/conn.php');
         $clave=$_POST['clave'];
-        echo $clave;
         $query="DELETE FROM registros WHERE `registros`.`clave` = '$clave'";
         $result=mysqli_query($conexion,$query);
         if ($result) {
